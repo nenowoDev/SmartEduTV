@@ -1,11 +1,13 @@
 package com.featureforce.smartedutv.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "program")
+@JsonPropertyOrder({"id", "programName", "programDate", "programLocation", "targetParticipation", "programDescription", "status", "hasReport"})
 public class ManageProgram {
 
     @Id
