@@ -36,4 +36,8 @@ public class ManageProgramService {
     public void deleteProgram(int id) {
         programDao.deleteProgram(id);
     }
+
+    public List<ManageProgram> searchProgramsByName(String name) {
+        return programDao.searchProgramsByName(name);
+    }
 }

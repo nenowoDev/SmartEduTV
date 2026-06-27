@@ -1,5 +1,6 @@
 package com.featureforce.smartedutv.controller;
 
+/*
 import com.featureforce.smartedutv.entity.ManageProgram;
 import com.featureforce.smartedutv.service.ManageProgramService;
 
@@ -10,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.access.prepost.PreAuthorize;
 
-// Main MVC controller handling original web page UI renders
+// Main MVC controller commented out as Option B is selected (REST APIs only)
 @Controller
 @RequestMapping("/program")
 public class ManageProgramController {
@@ -172,3 +173,4 @@ public class ManageProgramController {
         return "ProgramModule/viewProgram";
     }
 }
+*/

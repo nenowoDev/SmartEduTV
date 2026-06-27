@@ -48,4 +48,12 @@ public class ManageProgramDao {
     public ManageProgram getProgramById(int id) {
         return entityManager.find(ManageProgram.class, id);
     }
+
+    // 6. SEARCH BY NAME (5th functionality)
+    @Transactional(readOnly = true)
+    public List<ManageProgram> searchProgramsByName(String name) {
+        return getSession().createQuery("from ManageProgram where lower(programName) like :name", ManageProgram.class)
+                           .setParameter("name", "%" + name.toLowerCase() + "%")
+                           .getResultList();
+    }
 }
