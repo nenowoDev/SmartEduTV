@@ -112,21 +112,20 @@ public class ManageProgramController {
 
     // 5. DELETE (DELETE /api/programs/{id})
     // Postman: DELETE http://localhost:8080/api/programs/1
+    // Success: 204 No Content (no body) — REST convention
+    // Not found: 404 with error message
     @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> deleteProgram(@PathVariable("id") int id) {
+    public ResponseEntity<?> deleteProgram(@PathVariable("id") int id) {
         ManageProgram existingProgram = programService.getProgramById(id);
 
-        Map<String, Object> response = new LinkedHashMap<>();
         if (existingProgram == null) {
-            response.put("status", "error");
-            response.put("message", "Program not found with id: " + id);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            Map<String, Object> error = new LinkedHashMap<>();
+            error.put("status", "error");
+            error.put("message", "Program not found with id: " + id);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
         }
 
         programService.deleteProgram(id);
-        response.put("status", "success");
-        response.put("message", "Program deleted successfully");
-        response.put("deletedId", id);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.noContent().build();
     }
 }
